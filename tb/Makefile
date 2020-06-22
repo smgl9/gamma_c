@@ -2,7 +2,7 @@
 
 TOPLEVEL_LANG ?= vhdl
 SIM=ghdl
-# SIM_ARGS=--vcd=func.vcd
+SIM_ARGS=--vcd=func.vcd
 
 PWD=$(shell pwd)
 
