@@ -12,7 +12,7 @@ else
 WPWD=$(shell pwd)
 endif
 
-# PYTHONPATH := $(PWD)/..:$(PYTHONPATH)
+PYTHONPATH := $(PWD):$(PYTHONPATH)
 
 VHDL_SOURCES = $(WPWD)/../src/gamma.vhd
 
