@@ -26,7 +26,7 @@ def gamma_testAlive(dut):
     dut.data_in = data_in
     yield Timer(20*Period)
     print(dut.data_out)
-    if int(dut.data_out) == int(dut.data_out):
+    if int(dut.data_out) != int(dut.data_out):
         raise TestFailure(
         "result is incorrect: %s != %s" % str(dut.data_out))
     else:
