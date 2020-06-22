@@ -40,8 +40,6 @@ def gamma_testAlive(dut):
     out_data_disp_fnorm = vect_gamma_f(1/c_gamma,in_data_norm)
     
     # module out model
-    vect_gamma_fp = np.vectorize(gamma_fp)
-    # out_data_fp = vect_gamma_fp(out_data_f)
     out_data_fp = np.arange(0, 2**12, 1)
     for i in range(0,2**12):
         out_data_fp[i] = gamma_fp(out_data_f[i])
