@@ -3,7 +3,9 @@ import cocotb
 from cocotb.triggers import Timer
 from cocotb.result import TestFailure
 import random
-from functions import gamma_f
+from functions import gamma_f, gamma
+import numpy as np
+import matplotlib.pyplot as plt
 
 @cocotb.coroutine
 def gen_clk(clk, period):
@@ -21,6 +23,18 @@ def gamma_testAlive(dut):
     cocotb.fork(gen_clk(clk, Period))
     yield Timer(20*Period)
     reset = 0
+    # plot data
+    in_data = np.arange(0, 2**12, 1)
+    vect_gamma_f = np.vectorize(gamma_f)
+    out_data = vect_gamma_f(c_gamma,in_data)
+    out_data_disp = vect_gamma_f(2.2,in_data)
+    plt.plot(out_data_disp)
+    plt.show()
+    plt.plot(out_data)
+    plt.show()
+    print(in_data)
+    print(out_data)
+
     for i in range(0,10):
         dv_in = random.randint(0, 1)
         gamma_in = random.randint(0, 1)
