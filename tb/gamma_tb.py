@@ -24,17 +24,35 @@ def gamma_testAlive(dut):
     yield Timer(20*Period)
     reset = 0
     # plot data
+    # integer data input
     in_data = np.arange(0, 2**12, 1)
+    # Adjust data out
+    A_scan = 2**8/(2**12)**c_gamma 
+    A_disp = 2**8/(2**12)**(1/c_gamma) 
+    # normalized data input (0-1)
+    in_data_f = np.linspace(0, 1, num=2**12)
     vect_gamma_f = np.vectorize(gamma_f)
     out_data = vect_gamma_f(c_gamma,in_data)
-    out_data_disp = vect_gamma_f(2.2,in_data)
+    out_data_fp = out_data*A_scan
+    out_data_f = vect_gamma_f(c_gamma,in_data_f)
+    out_data_disp = vect_gamma_f(1/c_gamma,in_data)
+    out_data_disp_fp =out_data_disp*A_disp
+    out_data_disp_f = vect_gamma_f(1/c_gamma,in_data_f)
+    # plot
+    plt.plot(out_data_f)
+    plt.plot(out_data_disp_f)
+    plt.show()
     plt.plot(out_data_disp)
     plt.show()
     plt.plot(out_data)
     plt.show()
+    plt.plot(out_data_fp)
+    plt.plot(out_data_disp_fp)
+    plt.show()
+    print(in_data)
     print(in_data)
     print(out_data)
-
+    # Random test
     for i in range(0,10):
         dv_in = random.randint(0, 1)
         gamma_in = random.randint(0, 1)
