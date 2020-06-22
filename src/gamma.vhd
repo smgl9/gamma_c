@@ -6,8 +6,10 @@ entity gamma is
   port (
     clk      : in std_logic;
     reset    : in std_logic;
+    dv_in    : in std_logic;
     gamma_in : in std_logic_vector(15 downto 0);
     data_in  : in std_logic_vector(11 downto 0);
+    dv_out   : out std_logic;
     data_out : out std_logic_vector(7 downto 0)
   );
 end entity gamma;

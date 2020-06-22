@@ -18,10 +18,12 @@ def gamma_testAlive(dut):
     clk=dut.clk
     cocotb.fork(gen_clk(clk, Period))
     yield Timer(20*Period)
-    reset = random.randint(0, 1)
+    reset = 0
+    dv_in = random.randint(0, 1)
     gamma_in = random.randint(0, 1)
     data_in = random.randint(0, 1)
     dut.reset = reset
+    dut.dv_in = dv_in
     dut.gamma_in = gamma_in
     dut.data_in = data_in
     yield Timer(20*Period)
