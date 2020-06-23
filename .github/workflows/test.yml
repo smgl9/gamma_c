@@ -6,11 +6,11 @@ jobs:
   test-suites:
     runs-on: ubuntu-18.04
     container:
-      image: docker://terostech/multi-simulator:1.0.2
+      image: docker://terostech/multi-simulator:latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
       - name: Test
         run: |
           cd tb
-          SIM=ghdl pytest -s
+          make
