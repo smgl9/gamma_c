@@ -2,4 +2,4 @@
 
 Módulo:
 
-![gamma_c](./gamma.md "Readme_gamma_c")
+![gamma_c](./doc/gamma.md "Readme_gamma_c")
