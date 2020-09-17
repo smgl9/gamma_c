@@ -1,0 +1,16 @@
+name: Test_gamma
+
+on: [push]
+
+jobs:
+  test-suites:
+    runs-on: ubuntu-18.04
+    container:
+      image: docker://terostech/multi-simulator:latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v1
+      - name: Test
+        run: |
+          cd tb
+          make
