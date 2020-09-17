@@ -10,7 +10,6 @@ from cocotb.drivers.amba import AXI4LiteMaster
 from cocotb.drivers.amba import AXIProtocolError
 
 CLK_PERIOD_NS = 10
-G_COEF_BITS_OP= 32
 
 def setup_dut(dut):
     cocotb.fork(Clock(dut.s_axis_clk, CLK_PERIOD_NS, units='ns').start())
