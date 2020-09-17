@@ -6,6 +6,26 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.gamma_tables.all;
 
+
+--! {"name": "andGate_timed", "test" : "andgate_failing", 
+--!   "description": "a full AND-gate test designed to fail", 
+--!   "signal": [
+--!    ["CLK",
+--!     {"name": "CLK", "wave": "p......", "type":"std_logic", "period":"2"}],
+--!    ["IN",
+--!     {"name": "data_in", "wave": "x.1.x.1.x.....", "type": "std_logic"},
+--!     {"name": "gamma_in", "wave": "x.............", "type": "std_logic"},
+--!     {"name": "dv_in", "wave": "0.1.0.1.0.....", "type":"std_logic"}],
+--!    ["OUT",
+--!     {"name": "data_out", "wave": "x..1.x.1.x....", "type": "std_logic",},
+--!     {"name": "dv_out", "wave": "0..1.0.1.0....", "type": "std_logic",}]
+--! ]}
+
+-- ! {reg: [
+-- ! {bits: 16, name: 'gamma_in', attr: 'config'},
+-- ! {bits: 16, name: 'not_used', type: 4},
+-- ! ]}
+
 entity gamma is
 generic (
   G_DATA_IN : integer:=12; --! Data bits in
