@@ -3,7 +3,6 @@ import cocotb
 from cocotb.triggers import Timer
 from cocotb.result import TestFailure
 from cocotb.clock import Clock
-from functions import ccm,ccm_f
 import random
 import numpy as np
 from cocotb.drivers.amba import AXI4LiteMaster
@@ -12,7 +11,7 @@ from cocotb.drivers.amba import AXIProtocolError
 CLK_PERIOD_NS = 10
 
 def setup_dut(dut):
-    cocotb.fork(Clock(dut.s_axis_clk, CLK_PERIOD_NS, units='ns').start())
+    cocotb.fork(Clock(dut.axi_aclk, CLK_PERIOD_NS, units='ns').start())
 def setup_dut_axi(dut):
     cocotb.fork(Clock(dut.axi_aclk, CLK_PERIOD_NS, units='ns').start())
 

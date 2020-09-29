@@ -14,9 +14,9 @@ endif
 
 PYTHONPATH := $(PWD):$(PYTHONPATH)
 
-VHDL_SOURCES  = $(WPWD)/../../src/gamma_top.vhd
-VHDL_SOURCES += $(WPWD)/../../src/gamma.vhd
-VHDL_SOURCES += $(WPWD)/../../src/gamma_tables.vhd
+VHDL_SOURCES  = $(WPWD)/../../../src/gamma_top.vhd
+VHDL_SOURCES += $(WPWD)/../../../src/gamma.vhd
+VHDL_SOURCES += $(WPWD)/../../../src/gamma_tables.vhd
 
 TOPLEVEL := gamma_top
 MODULE   := gamma_top_tb
