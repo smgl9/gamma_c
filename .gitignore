@@ -5,5 +5,5 @@
 *.out
 *.vcd
 *.pyc
-/buil
-/sim_build
+**/build
+**/sim_build
