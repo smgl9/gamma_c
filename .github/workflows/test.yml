@@ -13,5 +13,6 @@ jobs:
       - name: Test
         run: |
           pip3 install fpbinary
+          pip3 install numpy
           cd tb
           make
