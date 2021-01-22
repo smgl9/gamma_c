@@ -2,4 +2,4 @@ image:
   file: .gitpod.Dockerfile
 vscode:
   extensions:
-    - teros-technology.teroshdl
+    - teros-technology.teroshdl@latest
