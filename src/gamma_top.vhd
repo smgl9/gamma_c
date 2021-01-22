@@ -85,6 +85,21 @@ architecture rtl of gamma_top is
   end component;
 begin
 
+  gamma_inst : entity work.gamma
+    generic map (
+      G_DATA_IN => G_DATA_IN,
+      G_DATA_OUT => G_DATA_OUT
+    )
+    port map (
+      clk => clk,
+      reset => reset,
+      dv_in => dv_in,
+      gamma_in => gamma_in,
+      data_in => data_in,
+      dv_out => dv_out,
+      data_out => data_out
+    );
+
   gamma_regs_inst : gamma_regs
   generic map(
     AXI_ADDR_WIDTH => AXI_ADDR_WIDTH,

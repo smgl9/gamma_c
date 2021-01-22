@@ -26,14 +26,6 @@ use work.gamma_tables.all;
 --!     { "name": "not_used",   "bits": 16, type: 4 }
 --! ]}
 
---! | OFFSET | LABEL                | R/W | SC  | DESCRIPTION                                   | RESET VALUE |
---! |:-----|----------------------|:--|-----|-----------------------------------------------|-------------|
---! | 0x0000 | **IP_VERSION**       |     |     |                                               |             |
---! |        | *[31:0] Version*     | R   | NO  | version info.                           | VERSION     |
---! | 0x0004 | **IP_CORE**          |     |     |                                               |             |
---! |        | *[31:0] ID*          | R   | NO  | Id Info.                                | ID          |
---! | 0x0008 | **gamma**            |     |     |                                                  | 0x7fffffff  |
---! |        | *[15:0] gamma*       | R/W | NO  | gamma value         |             |
 
 
 entity gamma is
