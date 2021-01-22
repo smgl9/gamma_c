@@ -1,3 +1,3 @@
-FROM ghdl/vunit:llvm
+FROM terostech/multi-simulator
 
 RUN pip3 install numpy
