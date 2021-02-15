@@ -6,3 +6,14 @@
 
 
 ![gamma_c](./doc/gamma.md "Readme_gamma_c")
+
+## Requisites
+
+- Python3
+- fpbinary
+```bash
+sudo apt-get update
+sudo apt-get install python3-dev
+pip isntall fpbinary
+```
+- cocotb
