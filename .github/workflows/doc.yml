@@ -2,6 +2,7 @@ name: gen_doc
 
 on: [push]
 
+jobs:
   teroshdl-doc:
     name: '📓 Docs'
     runs-on: ubuntu-latest
