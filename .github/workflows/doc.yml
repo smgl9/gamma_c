@@ -14,8 +14,11 @@ jobs:
       run: |
         git clone https://github.com/TerosTechnology/colibri.git
         cd colibri
+        git checkout -b trs_doc origin/trs_doc
         sudo rm -rf /usr/local/bin/phantomjs
         sudo npm install -g .
+        cd ..
+        cd teroshdl-hdl-documenter -p teroshdl.prj -o html
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.3
