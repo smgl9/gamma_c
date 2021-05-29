@@ -18,7 +18,7 @@ jobs:
         sudo rm -rf /usr/local/bin/phantomjs
         sudo npm install -g .
         cd ..
-        teroshdl-hdl-documenter -p teroshdl.prj -o html
+        teroshdl-hdl-documenter -p teroshdl.trs -o html
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.3
