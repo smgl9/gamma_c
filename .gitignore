@@ -1,9 +1,0 @@
-*.project
-*.pdf
-*.cf
-*.o
-*.out
-*.vcd
-*.pyc
-/buil
-/sim_build
