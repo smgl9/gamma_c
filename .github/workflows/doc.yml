@@ -1,19 +1,23 @@
-name: Test_gamma
+name: gen_doc
 
 on: [push]
 
-jobs:
-  test-suites:
-    runs-on: ubuntu-18.04
-    container:
-      image: docker://terostech/multi-simulator:latest
+  teroshdl-doc:
+    name: '📓 Docs'
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v1
-      - name: Test
-        run: |
-          pip3 install fpbinary
-          pip3 install matplotlib
-          pip3 install numpy
-          cd tb
-          make
+
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2
+    - name: 'install'
+      run: |
+        git clone https://github.com/TerosTechnology/colibri.git
+        cd colibri
+        npm install -g .
+
+    - name: '📤 Upload artifact: HTML and LaTeX'
+      uses: actions/upload-artifact@master
+      with:
+        name: doc
+        path: |
+          doc/
