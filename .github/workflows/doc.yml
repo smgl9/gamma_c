@@ -15,7 +15,7 @@ jobs:
         git clone https://github.com/TerosTechnology/colibri.git
         cd colibri
         sudo rm -rf /usr/local/bin/phantomjs
-        npm install -g .
+        sudo npm install -g .
 
     - name: '📤 Upload artifact: HTML and LaTeX'
       uses: actions/upload-artifact@master
