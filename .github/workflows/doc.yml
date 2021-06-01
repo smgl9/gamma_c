@@ -18,10 +18,10 @@ jobs:
         sudo rm -rf /usr/local/bin/phantomjs
         sudo npm install -g .
         cd ..
-        teroshdl-hdl-documenter -p teroshdl.trs -o html
+        teroshdl-hdl-documenter -f teroshdl.trs -o html
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.3
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: doc # The folder the action should deploy.
+        folder: built_doc # The folder the action should deploy.
