@@ -6,18 +6,14 @@ jobs:
   teroshdl-doc:
     name: '📓 Docs'
     runs-on: ubuntu-latest
+    container:
+      image: docker://terostech/colibri:latest
     steps:
 
     - name: '🧰 Checkout'
       uses: actions/checkout@v2
     - name: 'install'
       run: |
-        git clone https://github.com/TerosTechnology/colibri.git
-        cd colibri
-        git checkout -b trs_doc origin/trs_doc
-        sudo rm -rf /usr/local/bin/phantomjs
-        sudo npm install -g .
-        cd ..
         teroshdl-hdl-documenter -f teroshdl.trs -o html
 
     - name: Deploy 🚀
