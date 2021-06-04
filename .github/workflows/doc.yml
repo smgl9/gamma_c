@@ -1,6 +1,9 @@
 name: gen_doc
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   teroshdl-doc:
@@ -12,10 +15,10 @@ jobs:
 
     - name: '🧰 Checkout'
       uses: actions/checkout@v2
-    - name: 'install'
+    - name: 'doc_gen'
       run: |
-        apt install -y rsync
         teroshdl-hdl-documenter -f teroshdl.trs -o html
+        apt install -y rsync
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.3
