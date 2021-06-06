@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1623020695" />
+    <testcase classname="gamma_top_tb" file="/home/ismael/git/gamma_c/tb/cocotb/gamma_top/gamma_top_tb.py" lineno="19" name="gamma_top_test_axi_alive" ratio_time="35357.55121296756" sim_time_ns="1220.000001" time="0.03450465202331543" />
+  </testsuite>
+</testsuites>

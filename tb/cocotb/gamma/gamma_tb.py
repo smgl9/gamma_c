@@ -3,7 +3,7 @@ import cocotb
 from cocotb.triggers import Timer
 from cocotb.result import TestFailure
 import random
-from functions import gamma_f, gamma_fp,data_gen
+from functions import data_gen
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -28,7 +28,7 @@ def gamma_testAlive(dut):
     for i in range(0,100):
         reset = random.randint(0, 1)
         dv_in = random.randint(0, 1)
-        gamma_in = random.randint(0, 1)
+        gamma_in = 1
         data_in = random.randint(0, 2**12-1)
         dut.reset = reset
         dut.dv_in = dv_in
@@ -61,7 +61,7 @@ def gamma_ramp_test(dut):
     for i in range(0,2**12):
         reset = 0
         dv_in = 1
-        gamma_in = 0
+        gamma_in = 1
         data_in = i
         dut.reset = reset
         dut.dv_in = dv_in

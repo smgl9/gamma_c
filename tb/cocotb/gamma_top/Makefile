@@ -21,5 +21,4 @@ VHDL_SOURCES += $(WPWD)/../../../src/gamma_tables.vhd
 TOPLEVEL := gamma_top
 MODULE   := gamma_top_tb
 
-include $(shell cocotb-config --makefiles)/Makefile.inc
 include $(shell cocotb-config --makefiles)/Makefile.sim

@@ -35,8 +35,7 @@ use work.gamma_regs_pkg.all;
 
 entity gamma_regs is
     generic(
-        AXI_ADDR_WIDTH : integer := 32;  -- width of the AXI address bus
-        BASEADDR : std_logic_vector(31 downto 0) := x"00000000" -- the register file's system base address		
+        AXI_ADDR_WIDTH : integer := 32  -- width of the AXI address bus
     );
     port(
         -- Clock and Reset
@@ -79,6 +78,7 @@ architecture RTL of gamma_regs is
     -- Constants
     constant AXI_OKAY           : std_logic_vector(1 downto 0) := "00";
     constant AXI_DECERR         : std_logic_vector(1 downto 0) := "11";
+    constant c_addr_bits : natural := 16;
 
     -- Registered signals
     signal s_axi_awready_r    : std_logic;
@@ -159,14 +159,14 @@ begin
                     v_rdata_r  := (others => '0');
                     
                     -- register 'version' at address offset 0x0 
-                    if s_axi_araddr_reg_r = resize(unsigned(BASEADDR) + VERSION_OFFSET, AXI_ADDR_WIDTH) then
+                    if s_axi_araddr_reg_r(c_addr_bits-1 downto 0) = resize(VERSION_OFFSET, c_addr_bits) then
                         v_addr_hit := true;
                         v_rdata_r(31 downto 0) := s_reg_version_value;
                         s_version_strobe_r <= '1';
                         v_state_r := READ_RESPONSE;
                     end if;
                     -- register 'gamma' at address offset 0x4 
-                    if s_axi_araddr_reg_r = resize(unsigned(BASEADDR) + GAMMA_OFFSET, AXI_ADDR_WIDTH) then
+                    if s_axi_araddr_reg_r(c_addr_bits-1 downto 0) = resize(  GAMMA_OFFSET, c_addr_bits) then
                         v_addr_hit := true;
                         v_rdata_r(15 downto 0) := s_reg_gamma_value_r;
                         v_state_r := READ_RESPONSE;
@@ -287,57 +287,12 @@ begin
                     --
                     v_addr_hit := false;
                     -- register 'gamma' at address offset 0x4
-                    if s_axi_awaddr_reg_r = resize(unsigned(BASEADDR) + GAMMA_OFFSET, AXI_ADDR_WIDTH) then
+                    if s_axi_awaddr_reg_r(c_addr_bits-1 downto 0) = resize(  GAMMA_OFFSET, c_addr_bits) then
                         v_addr_hit := true;                        
                         s_gamma_strobe_r <= '1';
                         -- field 'value':
                         if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(0) <= s_axi_wdata_reg_r(0); -- value(0)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(1) <= s_axi_wdata_reg_r(1); -- value(1)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(2) <= s_axi_wdata_reg_r(2); -- value(2)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(3) <= s_axi_wdata_reg_r(3); -- value(3)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(4) <= s_axi_wdata_reg_r(4); -- value(4)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(5) <= s_axi_wdata_reg_r(5); -- value(5)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(6) <= s_axi_wdata_reg_r(6); -- value(6)
-                        end if;
-                        if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r(7) <= s_axi_wdata_reg_r(7); -- value(7)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(8) <= s_axi_wdata_reg_r(8); -- value(8)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(9) <= s_axi_wdata_reg_r(9); -- value(9)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(10) <= s_axi_wdata_reg_r(10); -- value(10)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(11) <= s_axi_wdata_reg_r(11); -- value(11)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(12) <= s_axi_wdata_reg_r(12); -- value(12)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(13) <= s_axi_wdata_reg_r(13); -- value(13)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(14) <= s_axi_wdata_reg_r(14); -- value(14)
-                        end if;
-                        if s_axi_wstrb_reg_r(1) = '1' then
-                            s_reg_gamma_value_r(15) <= s_axi_wdata_reg_r(15); -- value(15)
+                            s_reg_gamma_value_r <= s_axi_wdata_reg_r; -- value(0)
                         end if;
                     end if;
                     --
