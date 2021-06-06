@@ -52,8 +52,7 @@ architecture rtl of gamma_top is
 
   component gamma_regs
     generic (
-      AXI_ADDR_WIDTH : integer;
-      BASEADDR       : std_logic_vector(31 downto 0)
+      AXI_ADDR_WIDTH : integer
     );
     port (
       axi_aclk       : in std_logic;
@@ -83,6 +82,9 @@ architecture rtl of gamma_top is
       gamma_value    : out std_logic_vector(15 downto 0)
     );
   end component;
+
+  signal gamma_in : std_logic_vector(15 downto 0) := (others => '0') ;
+  
 begin
 
   gamma_inst : entity work.gamma
@@ -102,8 +104,7 @@ begin
 
   gamma_regs_inst : gamma_regs
   generic map(
-    AXI_ADDR_WIDTH => AXI_ADDR_WIDTH,
-    BASEADDR       => x"00000000"
+    AXI_ADDR_WIDTH => AXI_ADDR_WIDTH
   )
   port map(
     axi_aclk       => axi_aclk,
@@ -128,8 +129,8 @@ begin
     s_axi_bvalid   => s_axi_bvalid,
     s_axi_bready   => s_axi_bready,
     version_strobe => open,
-    version_value  => x"deadface",
+    version_value  => x"bebecafe",
     gamma_strobe   => open,
-    gamma_value    => open
+    gamma_value    => gamma_in
   );
 end architecture rtl;

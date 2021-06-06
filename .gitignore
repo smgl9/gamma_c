@@ -6,5 +6,5 @@
 *.vcd
 *.pyc
 /venv
-/build
-/sim_build
+build
+sim_build

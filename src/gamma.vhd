@@ -48,6 +48,7 @@ architecture rtl of gamma is
 
   signal sdata_out : std_logic_vector(G_DATA_OUT-1 downto 0) := (others => '0');
   signal sdv_out   : std_logic                    := '0';
+  signal rom       : rom_t :=(gamma_table_025,gamma_table_045,gamma_table_075);
 
 begin
 
@@ -58,7 +59,7 @@ begin
         sdata_out <= (others => '0');
       else
         if dv_in = '1' then
-          sdata_out <= gamma_table(to_integer(unsigned(data_in)));
+          sdata_out <= rom(to_integer(unsigned(gamma_in)))(to_integer(unsigned(data_in)));
         else
           sdata_out <= (others => '0');
         end if;
