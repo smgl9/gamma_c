@@ -11,7 +11,11 @@ from cocotb.drivers.amba import AXIProtocolError
 CLK_PERIOD_NS = 10
 
 def setup_dut(dut):
+<<<<<<< HEAD:tb/gamma_top/gamma_top_tb.py
     cocotb.fork(Clock(dut.clk, CLK_PERIOD_NS, units='ns').start())
+=======
+    cocotb.fork(Clock(dut.axi_aclk, CLK_PERIOD_NS, units='ns').start())
+>>>>>>> c09b4ba69608777a5911f129a5d336336b23e632:tb/cocotb/gamma_top/gamma_top_tb.py
 def setup_dut_axi(dut):
     cocotb.fork(Clock(dut.axi_aclk, CLK_PERIOD_NS, units='ns').start())
 

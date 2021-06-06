@@ -21,10 +21,12 @@ use work.gamma_tables.all;
 --!     {"name": "dv_out", "wave": "0..1.0.1.0....", "type": "std_logic",}]
 --! ]}
 
---! {reg: [
---! {bits: 16, name: 'gamma_in', attr: 'config'},
---! {bits: 16, name: 'not_used', type: 4},
+--! {reg:[
+--!     { "name": "gamma_in",   "bits": 16, "attr": "config" },
+--!     { "name": "not_used",   "bits": 16, type: 4 }
 --! ]}
+
+
 
 entity gamma is
 generic (

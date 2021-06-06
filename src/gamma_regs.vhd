@@ -17,6 +17,16 @@
 -- POSSIBILITY OF SUCH DAMAGE.
 -- -----------------------------------------------------------------------------
 
+--! | OFFSET | LABEL                | R/W | SC  | DESCRIPTION                                   | RESET VALUE |
+--! |:-----|----------------------|:--|-----|-----------------------------------------------|-------------|
+--! | 0x0000 | **IP_VERSION**       |     |     |                                               |             |
+--! |        | *[31:0] Version*     | R   | NO  | version info.                           | VERSION     |
+--! | 0x0004 | **IP_CORE**          |     |     |                                               |             |
+--! |        | *[31:0] ID*          | R   | NO  | Id Info.                                | ID          |
+--! | 0x0008 | **gamma**            |     |     |                                                  | 0x7fffffff  |
+--! |        | *[15:0] gamma*       | R/W | NO  | gamma value         |             |
+
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
