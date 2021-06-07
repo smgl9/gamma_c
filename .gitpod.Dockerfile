@@ -47,4 +47,12 @@ RUN git clone https://github.com/ghdl/ghdl.git --depth=1 --branch ${GHDL_BRANCH}
     && cd .. \
     && rm -rf ghdl
 
+## Install cocotb
+RUN pip3 install cocotb
+
+## Utils
+RUN pip3 install numpy
+RUN pip3 install fpbinary
+RUN pip3 install matplotlib
+
 
