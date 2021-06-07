@@ -292,7 +292,7 @@ begin
                         s_gamma_strobe_r <= '1';
                         -- field 'value':
                         if s_axi_wstrb_reg_r(0) = '1' then
-                            s_reg_gamma_value_r <= s_axi_wdata_reg_r; -- value(0)
+                            s_reg_gamma_value_r <= s_axi_wdata_reg_r(GAMMA_VALUE_BIT_WIDTH-1 downto 0); -- value(0)
                         end if;
                     end if;
                     --

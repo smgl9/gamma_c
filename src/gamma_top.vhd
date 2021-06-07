@@ -50,39 +50,6 @@ end entity gamma_top;
 
 architecture rtl of gamma_top is
 
-  component gamma_regs
-    generic (
-      AXI_ADDR_WIDTH : integer
-    );
-    port (
-      axi_aclk       : in std_logic;
-      axi_aresetn    : in std_logic;
-      s_axi_awaddr   : in std_logic_vector(AXI_ADDR_WIDTH - 1 downto 0);
-      s_axi_awprot   : in std_logic_vector(2 downto 0);
-      s_axi_awvalid  : in std_logic;
-      s_axi_awready  : out std_logic;
-      s_axi_wdata    : in std_logic_vector(31 downto 0);
-      s_axi_wstrb    : in std_logic_vector(3 downto 0);
-      s_axi_wvalid   : in std_logic;
-      s_axi_wready   : out std_logic;
-      s_axi_araddr   : in std_logic_vector(AXI_ADDR_WIDTH - 1 downto 0);
-      s_axi_arprot   : in std_logic_vector(2 downto 0);
-      s_axi_arvalid  : in std_logic;
-      s_axi_arready  : out std_logic;
-      s_axi_rdata    : out std_logic_vector(31 downto 0);
-      s_axi_rresp    : out std_logic_vector(1 downto 0);
-      s_axi_rvalid   : out std_logic;
-      s_axi_rready   : in std_logic;
-      s_axi_bresp    : out std_logic_vector(1 downto 0);
-      s_axi_bvalid   : out std_logic;
-      s_axi_bready   : in std_logic;
-      version_strobe : out std_logic;
-      version_value  : in std_logic_vector(31 downto 0);
-      gamma_strobe   : out std_logic;
-      gamma_value    : out std_logic_vector(15 downto 0)
-    );
-  end component;
-
   signal gamma_in : std_logic_vector(15 downto 0) := (others => '0') ;
   
 begin
@@ -102,7 +69,7 @@ begin
       data_out => data_out
     );
 
-  gamma_regs_inst : gamma_regs
+  gamma_regs_inst :  entity work.gamma_regs
   generic map(
     AXI_ADDR_WIDTH => AXI_ADDR_WIDTH
   )
@@ -133,4 +100,5 @@ begin
     gamma_strobe   => open,
     gamma_value    => gamma_in
   );
+
 end architecture rtl;
