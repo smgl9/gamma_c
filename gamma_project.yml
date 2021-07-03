@@ -1,0 +1,35 @@
+toplevel: gamma_top
+name: gamma_project
+files: 
+  - name: "src/gamma_regs.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/gamma_top.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/gamma.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/gamma_tables.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+  - name: "src/gamma_regs_pkg.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
+tool_options: 
+  vunit: 
+    installation_path: ""
+    simulator: ghdl
+    options: "--verbose\x20"
+    add_libraries: ""
+    runner: ""
