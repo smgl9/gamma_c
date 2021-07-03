@@ -2,8 +2,8 @@ name: gen_doc
 
 on:
   push:
-    # branches:
-    #   - master
+    branches:
+      - master
 
 jobs:
   teroshdl-doc:
