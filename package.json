@@ -1,0 +1,30 @@
+{
+  "name": "gamma_c",
+  "version": "1.0.0",
+  "description": "gamma correction",
+  "vendor": "Teros_Technology",
+  "library": "vhdl_utils",
+  "keywords": [
+    "vhdl",
+    "cdc"
+  ],
+  "files": [
+    "doc",
+    "src",
+    "README_integration.md",
+    "build"
+  ],
+  "dependencies": {
+
+  },
+  "homepage": "",
+  "bugs": {
+    "url": ""
+  },
+  "src": [
+  ],
+  "scripts": {
+    "postinstall": ""
+  },
+  "author": "Ismael Perez Rojo"
+}
