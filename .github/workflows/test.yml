@@ -15,6 +15,7 @@ jobs:
           pip3 install fxpmath
           pip3 install matplotlib
           pip3 install numpy
+          pip install cocotbext-axi
           cd tb/cocotb/gamma
           make
           cd ..
