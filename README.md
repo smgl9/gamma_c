@@ -10,10 +10,14 @@ Gamma correction
 ## Requisites
 
 - Python3
-- fpbinary
+- fxpmath
 ```bash
 sudo apt-get update
 sudo apt-get install python3-dev
-pip isntall fpbinary
+pip isntall fxpmath
 ```
 - cocotb
+```bash
+pip install cocotb
+pip install cocotbext-axi
+```

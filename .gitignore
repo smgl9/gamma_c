@@ -5,6 +5,7 @@
 *.out
 *.vcd
 *.pyc
+*.xml
 /venv
 build
 sim_build

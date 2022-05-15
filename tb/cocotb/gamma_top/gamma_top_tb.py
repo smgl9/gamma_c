@@ -1,4 +1,3 @@
-# from fpbinary import FpBinary, OverflowEnum, RoundingEnum
 import cocotb
 from cocotb.triggers import Timer
 from cocotb.regression import TestFactory
@@ -6,8 +5,7 @@ from cocotb.result import TestFailure
 from cocotb.clock import Clock
 import random
 import numpy as np
-from cocotb.drivers.amba import AXI4LiteMaster
-from cocotb.drivers.amba import AXIProtocolError
+from cocotbext.axi import AxiLiteMaster, AxiLiteBus
 
 CLK_PERIOD_NS = 10
 
@@ -29,7 +27,7 @@ def gamma_top_test_axi_alive(dut):
     dut.axi_aresetn = 1
     yield Timer(CLK_PERIOD_NS*200, units='ns')
 
-    axim = AXI4LiteMaster(dut, "s_axi", dut.axi_aclk)
+    axim = AxiLiteMaster(AxiLiteBus.from_prefix(dut, "s_axi"), dut.axi_aclk, dut.axi_aresetn, False)
     yield Timer(CLK_PERIOD_NS * 20, units='ns')
 
     yield Timer(100*CLK_PERIOD_NS, units='ns')
@@ -37,27 +35,29 @@ def gamma_top_test_axi_alive(dut):
     DATA = 0xbebecafe
 
     dut._log.info("AXI-Lite: Reading address 0x%02X" % (ADDRESS))
-
-    value = yield axim.read(ADDRESS)
+    
+    length=4
+    value = yield axim.read(ADDRESS, length)
     yield Timer(CLK_PERIOD_NS * 10, units='ns')
 
-    if value != DATA:
+    data_value = int.from_bytes(value[1],byteorder='little', signed=False)
+    if data_value != DATA:
         # Fail
         raise TestFailure("Register at address 0x%08X should have been: \
-                           0x%08X but was 0x%08X" % (ADDRESS, DATA, int(value)))
+                           0x%08X but was 0x%08X" % (ADDRESS, DATA, data_value))
     ADDRESS = 0x04
     DATA = 0x1
-
-    value = yield axim.write(ADDRESS,DATA)
+    value = yield axim.write(ADDRESS, bytes([DATA]))
     yield Timer(CLK_PERIOD_NS * 10, units='ns')
 
     yield Timer(CLK_PERIOD_NS * 10, units='ns')
 
-    value = yield axim.read(ADDRESS)
+    value = yield axim.read(ADDRESS, length)
     yield Timer(CLK_PERIOD_NS * 10, units='ns')
 
-    if value != DATA:
+    data_value = int.from_bytes(value[1],byteorder='little', signed=False)
+    if data_value != DATA:
         # Fail
         raise TestFailure("Register at address 0x%08X should have been: \
-                           0x%08X but was 0x%08X" % (ADDRESS, DATA, int(value)))
+                           0x%08X but was 0x%08X" % (ADDRESS, DATA, data_value))
 
