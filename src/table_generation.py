@@ -1,5 +1,5 @@
 import numpy as np
-from fpbinary import FpBinary, OverflowEnum, RoundingEnum
+from fxpmath import Fxp
 import matplotlib.pyplot as plt
 
 def gamma_f(gamma,v_in):
@@ -7,7 +7,7 @@ def gamma_f(gamma,v_in):
     return v_out
 
 def gamma_fp(gamma):
-    gamma_fp_value = FpBinary(int_bits=8, frac_bits=0, signed=False, value=gamma)
+    gamma_fp_value = Fxp(gamma, signed=False, n_word=8, n_frac=0 ) # dtype='U8.0')
     return gamma_fp_value
 
 

@@ -1,7 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1652651155" />
-    <testcase name="gamma_testAlive" classname="gamma_tb" file="/home/ismael/git/smgl9/gamma_c/tb/cocotb/gamma/gamma_tb.py" lineno="18" time="44.26779389381409" sim_time_ns="0.020201" ratio_time="0.00045633627120557406" />
-    <testcase name="gamma_ramp_test" classname="gamma_tb" file="/home/ismael/git/smgl9/gamma_c/tb/cocotb/gamma/gamma_tb.py" lineno="51" time="104.09762239456177" sim_time_ns="0.8194009999999999" ratio_time="0.007871467005213817" />
-  </testsuite>
-</testsuites>
