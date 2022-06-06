@@ -36,6 +36,7 @@ RUN brew install icarus-verilog
 #     && sudo make --silent install \
 #     && cd .. \
 #     && rm -rf verilator
+RUN brew install verilator
 
 ## Install GHDL
 # ENV GHDL_BRANCH=v2.0.0
@@ -46,7 +47,7 @@ RUN brew install icarus-verilog
 #     && sudo make --silent install \
 #     && cd .. \
 #     && rm -rf ghdl
-RUN sudo apt-get install -y ghdl
+RUN brew install --cask ghdl
 
 ## Install cocotb and extensions
 RUN pip3 install cocotb
