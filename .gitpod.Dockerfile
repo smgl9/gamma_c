@@ -36,7 +36,6 @@ RUN brew install icarus-verilog
 #     && sudo make --silent install \
 #     && cd .. \
 #     && rm -rf verilator
-RUN sudo apt-get install -y verilator
 
 ## Install GHDL
 # ENV GHDL_BRANCH=v2.0.0
