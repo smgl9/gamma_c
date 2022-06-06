@@ -26,10 +26,16 @@ files:
     is_include_file: false
     include_path: ""
     logical_name: ""
+  - name: "src/gamma_stream.vhd"
+    file_type: "vhdlSource-2008"
+    is_include_file: false
+    include_path: ""
+    logical_name: ""
 tool_options: 
-  vunit: 
-    installation_path: ""
-    simulator: ghdl
-    options: "--verbose\x20"
-    add_libraries: ""
-    runner: ""
+  icarus: 
+    installation_path: "/home/ismael/oss-cad-suite/bin"
+    timescale: ""
+    iverilog_options: 
+      - ""
+    linter_options: 
+      - ""

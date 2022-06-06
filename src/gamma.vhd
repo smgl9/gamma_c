@@ -30,23 +30,23 @@ use work.gamma_tables.all;
 
 entity gamma is
 generic (
-  G_DATA_IN : integer:=12; --! Data bits in
-  G_DATA_OUT : integer:=8  --! Data bits out
+  data_in_g : integer:=12; --! Data bits in
+  data_out_g : integer:=8  --! Data bits out
 );
   port (
     clk      : in std_logic; --! Reloj del sistema
     reset    : in std_logic; --! Reset nivel alto
     dv_in    : in std_logic; --! Data valid in
-    gamma_in : in std_logic_vector(15 downto 0); --! Configuración gamma. No usado
-    data_in  : in std_logic_vector(G_DATA_IN-1 downto 0); --! Dato de entrada del ADC
+    gamma_in : in std_logic_vector(15 downto 0); --! Configuración gamma.
+    data_in  : in std_logic_vector(data_in_g-1 downto 0); --! Dato de entrada del ADC
     dv_out   : out std_logic; --! Data valid de salida
-    data_out : out std_logic_vector(G_DATA_OUT-1 downto 0) --! Data out
+    data_out : out std_logic_vector(data_out_g-1 downto 0) --! Data out
   );
 end entity gamma;
 
 architecture rtl of gamma is
 
-  signal sdata_out : std_logic_vector(G_DATA_OUT-1 downto 0) := (others => '0');
+  signal sdata_out : std_logic_vector(data_out_g-1 downto 0) := (others => '0');
   signal sdv_out   : std_logic                    := '0';
   signal rom       : rom_t :=(gamma_table_025,gamma_table_045,gamma_table_075);
 

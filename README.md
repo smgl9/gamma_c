@@ -14,7 +14,7 @@ Gamma correction
 ```bash
 sudo apt-get update
 sudo apt-get install python3-dev
-pip isntall fxpmath
+pip install fxpmath
 ```
 - cocotb
 ```bash

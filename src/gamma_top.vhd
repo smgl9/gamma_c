@@ -7,17 +7,17 @@ use ieee.numeric_std.all;
 
 entity gamma_top is
   generic (
-    G_DATA_IN      : integer := 12; --! Data bits in
-    G_DATA_OUT     : integer := 8;  --! Data bits out
+    data_in_g      : integer := 12; --! Data bits in
+    data_out_g     : integer := 8;  --! Data bits out
     AXI_ADDR_WIDTH : integer := 32
   );
   port (
     clk           : in std_logic;                                  --! Reloj del sistema
     reset         : in std_logic;                                  --! Reset nivel alto
     dv_in         : in std_logic;                                  --! Data valid in
-    data_in       : in std_logic_vector(G_DATA_IN - 1 downto 0);   --! Dato de entrada del ADC
+    data_in       : in std_logic_vector(data_in_g - 1 downto 0);   --! Dato de entrada del ADC
     dv_out        : out std_logic;                                 --! Data valid de salida
-    data_out      : out std_logic_vector(G_DATA_OUT - 1 downto 0); --! Data out
+    data_out      : out std_logic_vector(data_out_g - 1 downto 0); --! Data out
     -- Axi_lite
     axi_aclk      : in std_logic;
     axi_aresetn   : in std_logic;
@@ -56,8 +56,8 @@ begin
 
   gamma_inst : entity work.gamma
     generic map (
-      G_DATA_IN => G_DATA_IN,
-      G_DATA_OUT => G_DATA_OUT
+      data_in_g => data_in_g,
+      data_out_g => data_out_g
     )
     port map (
       clk => clk,

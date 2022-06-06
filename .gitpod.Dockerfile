@@ -25,34 +25,37 @@ RUN brew install icarus-verilog
 
 ## Install Verilator
 #ENV VERILATOR_BRANCH=stable
-ENV VERILATOR_BRANCH=v4.106
+# ENV VERILATOR_BRANCH=v4.106
 
-RUN git clone https://github.com/verilator/verilator.git --branch ${VERILATOR_BRANCH} verilator \
-    && unset VERILATOR_ROOT \
-    && cd verilator \
-    && autoconf \
-    && ./configure \
-    && make --silent \
-    && sudo make --silent install \
-    && cd .. \
-    && rm -rf verilator
+# RUN git clone https://github.com/verilator/verilator.git --branch ${VERILATOR_BRANCH} verilator \
+#     && unset VERILATOR_ROOT \
+#     && cd verilator \
+#     && autoconf \
+#     && ./configure \
+#     && make --silent \
+#     && sudo make --silent install \
+#     && cd .. \
+#     && rm -rf verilator
+RUN apt-get install -y verilator
 
 ## Install GHDL
-ENV GHDL_BRANCH=v1.0.0
-RUN git clone https://github.com/ghdl/ghdl.git --depth=1 --branch ${GHDL_BRANCH} ghdl \
-    && cd ghdl \
-    && ./configure \
-    && make --silent \
-    && sudo make --silent install \
-    && cd .. \
-    && rm -rf ghdl
+# ENV GHDL_BRANCH=v2.0.0
+# RUN git clone https://github.com/ghdl/ghdl.git --depth=1 --branch ${GHDL_BRANCH} ghdl \
+#     && cd ghdl \
+#     && ./configure \
+#     && make --silent \
+#     && sudo make --silent install \
+#     && cd .. \
+#     && rm -rf ghdl
+RUN apt-get install -y ghdl
 
-## Install cocotb
+## Install cocotb and extensions
 RUN pip3 install cocotb
+RUN pip3 install cocotbext-axi
 
 ## Utils
 RUN pip3 install numpy
-RUN pip3 install fpbinary
+RUN pip3 install fxpmath
 RUN pip3 install matplotlib
 
 
