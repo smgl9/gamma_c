@@ -57,5 +57,6 @@ RUN pip3 install cocotbext-axi
 RUN pip3 install numpy
 RUN pip3 install fxpmath
 RUN pip3 install matplotlib
+RUN pip3 install teroshdl
 
 
